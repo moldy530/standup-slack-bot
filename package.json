@@ -1,0 +1,19 @@
+{
+  "name": "hackathon-slack-standup",
+  "version": "0.0.1",
+  "description": "A slack bot for handling standup notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "standup",
+    "slack",
+    "jell"
+  ],
+  "author": "moldy530",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^1.2.0"
+  }
+}
