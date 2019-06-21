@@ -1,12 +1,18 @@
-import { App } from '@slack/bolt';
+const functions = require('firebase-functions');
+const { App } = require('@slack/bolt');
 
-const token = process.env.SLACK_BOT_TOKEN;
-const oauthToken = process.env.SLACK_USER_TOKEN;
+const {
+    slackbottoken,
+    lacksigningsecret,
+    slackusertoken
+} = functions.config().sjamm;
+const token = slackbottoken;
+const oauthToken = slackusertoken;
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
     token: token,
-    signingSecret: process.env.SLACK_SIGNING_SECRET
+    signingSecret: lacksigningsecret
 });
 
 const labels = {
@@ -200,10 +206,4 @@ const handleStandupSubmission = async ({ submission, respond, payload }) => {
     });
 };
 
-(async () => {
-    // Start your app
-    await app.start(process.env.PORT || 3000);
-
-    console.log('⚡️ Bolt app is running!');
-})();
-
+exports.jamm = functions.https.onRequest(app.receiver.requestHandler);
