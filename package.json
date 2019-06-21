@@ -1,11 +1,16 @@
 {
-  "name": "hackathon-slack-standup",
+  "name": "jamm",
   "version": "0.0.1",
   "description": "A slack bot for handling standup notes",
-  "main": "index.js",
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/app.js",
-    "build": "clean && babel src -d lib",
+    "build": "npm run clean && babel src -d lib",
+    "now:dev": "npm run build && now dev",
+    "now": "npm run build && now",
     "clean": "rimraf lib",
     "test": "jest"
   },
@@ -17,7 +22,9 @@
   "author": "moldy530",
   "license": "ISC",
   "dependencies": {
-    "@slack/bolt": "^1.2.0"
+    "@slack/bolt": "^1.2.0",
+    "node-fetch": "^2.6.0",
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

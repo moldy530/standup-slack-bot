@@ -205,4 +205,17 @@ const handleStandupSubmission = async ({ submission, respond, payload }) => {
     await app.start(process.env.PORT || 3000);
 
     console.log('⚡️ Bolt app is running!');
+
+    return app;
 })();
+
+(async () => {
+    // Start your app
+    await app.start(process.env.PORT || 3000);
+
+    console.log('⚡️ Bolt app is running!');
+
+    return app;
+})();
+
+export default app.receiver.app;
